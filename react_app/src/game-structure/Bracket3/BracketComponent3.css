@@ -1,0 +1,47 @@
+.tournamet {
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.group-one {
+    /* border: 2px solid green; */
+    margin-right: 20px;
+    margin-left: 50px;
+}
+
+.group-two {
+    /* border: 2px solid red; */
+    margin-right: 20px;
+    margin-left: 50px;
+}
+
+.group-two ul {
+    margin-bottom: 70px;
+}
+
+.group-three {
+    /* border: 2px solid purple; */
+    margin-right: 20px;
+    margin-left: 50px;
+}
+
+.group-three ul {
+    margin-bottom: 70px;
+}
+
+.group-four {
+    /* border: 2px solid orangered; */
+    margin-right: 20px;
+    margin-left: 50px;
+}
+.group-four h3{
+    margin-left: 50px;
+}
+
+.battle-container li {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid black;
+
+}

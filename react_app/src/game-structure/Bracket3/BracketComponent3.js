@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-
+import './BracketComponent3.css'
 
 
 export const BracketComponent3 = () => {
 
-
-
-    const [roundOne, setRoundOne] = useState();
-    const [roundTwo, setRoundTwo] = useState();
-    const [roundThree, setRoundThree] = useState();
     const [teams, setTeams] = useState();
-    const [next, setNextBattles] = useState();
+    const [curentRound, setNextRound] = useState([]);
+    const [roundOne, setRounOne] = useState([])
+    const [roundTwo, setRoundTwo] = useState([])
+    const [roundThree, setRoundThree] = useState([])
+    const [final, setFinal]=useState([])
 
 
     let players = [
@@ -28,30 +27,32 @@ export const BracketComponent3 = () => {
     ];
 
     useEffect(() => {
-        setRoundOne(players);
+        setNextRound(players);
     }, [])
 
-    function Battles(teams) {
-
+    function Battles() {
 
         let battle = [];
         let counter = 0;
         let result = [];
 
+        // ДА Сложа ифове за всеки роунд
 
-        for (let i = 0; i < roundOne.length; i++) {
-            // console.log(roundOne[i].teams[0].score)
-            // console.log(roundOne[i].teams[1].score)
+
+        for (let i = 0; i < curentRound.length; i++) {
+            // console.log(curentRound[i].teams[0].score)
+            // console.log(curentRound[i].teams[1].score)
+
             if (counter < 2) {
 
-                if (roundOne[i].teams[0].score > roundOne[i].teams[1].score) {
-                    // console.log(roundOne[i].teams[0])
+                if (curentRound[i].teams[0].score > curentRound[i].teams[1].score) {
+                    // console.log(curentRound[i].teams[0])
                     counter++
-                    battle.push(roundOne[i].teams[0])
-                } else if (roundOne[i].teams[0].score < roundOne[i].teams[1].score) {
-                    // console.log(roundOne[i].teams[1])
+                    battle.push(curentRound[i].teams[0])
+                } else if (curentRound[i].teams[0].score < curentRound[i].teams[1].score) {
+                    // console.log(curentRound[i].teams[1])
                     counter++
-                    battle.push(roundOne[i].teams[1])
+                    battle.push(curentRound[i].teams[1])
                 }
 
                 // console.log(roundTwo)
@@ -65,8 +66,7 @@ export const BracketComponent3 = () => {
 
         }
 
-        setNextBattles(result)
-        setRoundTwo(result)
+        setNextRound(result)
 
 
     }
@@ -74,105 +74,83 @@ export const BracketComponent3 = () => {
 
     function A() {
 
-        setTeams(roundOne)
         Battles(teams)
-        console.log(roundTwo)
-        console.log(next)
+        console.log(curentRound)
 
-        // let battle = [];
-        // let counter = 0;
-        // let result = [];
-
-
-        // for (let i = 0; i < roundOne.length; i++) {
-        //     // console.log(roundOne[i].teams[0].score)
-        //     // console.log(roundOne[i].teams[1].score)
-        //     if (counter < 2) {
-
-        //         if (roundOne[i].teams[0].score > roundOne[i].teams[1].score) {
-        //             // console.log(roundOne[i].teams[0])
-        //             counter++
-        //             battle.push(roundOne[i].teams[0])
-        //         } else if (roundOne[i].teams[0].score < roundOne[i].teams[1].score) {
-        //             // console.log(roundOne[i].teams[1])
-        //             counter++
-        //             battle.push(roundOne[i].teams[1])
-        //         }
-
-        //         // console.log(roundTwo)
-        //         if (counter == 2) {
-        //             result.push({ id: i, teams: battle })
-        //             battle = [];
-        //             counter = 0;
-        //         }
-
-        //     }
-
-        // }
-
-        // setRoundTwo(result)
     }
 
-    function B() {
+    function RoundOne() {
+        setRounOne(curentRound)
+    }
+    function RoundTwo() {
+        setRoundTwo(curentRound)
+    }
 
-        if (roundTwo == undefined) {
-            return console.log('state is empty');
-        } else {
-
-            let battle = [];
-            let counter = 0;
-            let result = [];
-
-
-            for (let i = 0; i < roundTwo.length; i++) {
-                // console.log(roundTwo[i].teams[0].score)
-                // console.log(roundTwo[i].teams[1].score)
-                if (counter < 2) {
-
-                    if (roundTwo[i].teams[0].score > roundTwo[i].teams[1].score) {
-                        // console.log(roundTwo[i].teams[0])
-                        counter++
-                        battle.push(roundTwo[i].teams[0])
-                    } else if (roundTwo[i].teams[0].score < roundTwo[i].teams[1].score) {
-                        // console.log(roundTwo[i].teams[1])
-                        counter++
-                        battle.push(roundTwo[i].teams[1])
-                    }
-
-                    // console.log(roundTwo)
-                    if (counter == 2) {
-                        result.push({ id: i, teams: battle })
-                        battle = [];
-                        counter = 0;
-                    }
-
-                }
-
-            }
-
-            setRoundThree(result)
-
-        }
+    function reload() {
+        window.location.reload()
     }
 
 
-    function C() {
-        if (roundThree == undefined) {
-            console.log('state is empty');
-        } else {
-            console.log(roundThree)
-        }
-    }
 
 
     return (
 
         <div>
-            BracketComponent3
+            <button type='button' onClick={A}>Battle</button>
+            <button type='button' onClick={RoundOne}>Battle1</button>
+            <button type='button' onClick={RoundTwo}>Battle</button>
 
-            <button type='button' onClick={A}>round One</button>
-            <button type='button' onClick={B}>Round Two</button>
-            <button type='button' onClick={C}>Round Three</button>
-        </div>
+            <button type='button' onClick={reload}>reload groups</button>
+            <div className='tournamet'>
+                <div className='group-one'>
+                    {curentRound?.map((team) => {
+                        return (
+                            <ul className='battle-container'>
+                                <li>{team.teams[0].name} - score: {team.teams[0].score}p. </li>
+                                <li>{team.teams[1].name} - score: {team.teams[1].score}p. </li>
+                            </ul>
+                        )
+
+                    })}
+
+                </div>
+                {/* <div className='group-two'>
+                    <ul className='battle-container'>
+                        <li>Team A</li>
+                        <li>Team B</li>
+                    </ul>
+                    <ul className='battle-container'>
+                        <li>Team C</li>
+                        <li>Team D</li>
+                    </ul>
+                    <ul className='battle-container'>
+                        <li>Team E</li>
+                        <li>Team F</li>
+                    </ul>
+                    <ul className='battle-container'>
+                        <li>Team G</li>
+                        <li>Team H</li>
+                    </ul>
+                </div>
+                <div className='group-three'>
+                    <ul className='battle-container'>
+                        <li>Team A</li>
+                        <li>Team B</li>
+                    </ul>
+                    <ul className='battle-container'>
+                        <li>Team C</li>
+                        <li>Team D</li>
+                    </ul>
+
+                </div>
+                <div className='group-four'>
+                    <h3>FINAL</h3>
+                    <ul className='battle-container'>
+                        <li>Team A</li>
+                        <li>Team B</li>
+                    </ul>
+                </div> */}
+            </div>
+        </div >
     )
 }
