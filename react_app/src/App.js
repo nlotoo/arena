@@ -5,8 +5,8 @@ import { NotFoundPage } from './additionalComponents/notFoundPage/NotFoundPage.j
 import { LoginPage } from './auth/login/loginPage.js';
 import { RegisterPage } from './auth/register/registerPage';
 import { ArenaPage } from './game-structure/ArenaPage.js';
-import { Component } from './game-structure/bracket';
 
+import { BracketComponent3 } from './game-structure/Bracket3/BracketComponent3.js'
 function App() {
   return (
     <div>
@@ -17,8 +17,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/arena" element={<ArenaPage />} />
-        <Route path="/component" element={<Component />} />
+
+        <Route path="/bracket3" element={<BracketComponent3 />} />
         <Route path="*" element={<NotFoundPage />} />
+
       </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Bracket, RoundProps, Seed, SeedItem, SeedTeam, RenderSeedProps } from 'react-brackets';
 import React from 'react';
 
+import './BracketComponent.css'
 
 const rounds = [
   {
@@ -100,14 +101,14 @@ const rounds = [
   }
 ];
 
-export const Component = () => {
+export const BracketComponent = () => {
   return (
     <Bracket
       rounds={rounds}
-      roundTitleComponent={(title: React.ReactNode, roundIndex: number) => {
-        return <div style={{ textAlign: 'center', color: 'red' }}>{title}</div>;
-        //
-      }}
+      // roundTitleComponent={(title: React.ReactNode, roundIndex: number) => {
+      //   return <div className='bracket-div'>{title}</div>;
+      //   //
+      // }}
     />
   );
 };

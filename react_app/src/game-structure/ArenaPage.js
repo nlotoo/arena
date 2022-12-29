@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./ArenaPage.css";
-import { CollumTree } from './collumTwo/collumTree/CollumTree';
+// import { CollumTree } from './collumTwo/collumTree/CollumTree';
+// import { DelayedComponent } from './DelayedComp/DelayedComp';
 import { CollumTwo } from './collumTwo/CollumTwo';
-import { DelayedComponent } from './DelayedComp/DelayedComp';
 import styled from 'styled-components';
 const time = 1500;
 export const ArenaPage = () => {
@@ -63,10 +63,10 @@ export const ArenaPage = () => {
 
     ]
     
-    async function sleepFor( sleepDuration ){
-        var now = new Date().getTime();
-         while( await new Date().getTime() < now + sleepDuration){ /* do nothing */ } 
-    }
+    // async function sleepFor( sleepDuration ){
+    //     var now = new Date().getTime();
+    //      while( await new Date().getTime() < now + sleepDuration){ /* do nothing */ } 
+    // }
     
    
     playerData.filter((a, i) => {
@@ -96,11 +96,11 @@ export const ArenaPage = () => {
 
     });
     
-    const Display = styled.div`
-    display: flex;
-    position: relative;
-    margin: 0px;
-    `
+    // const Display = styled.div`
+    // display: flex;
+    // position: relative;
+    // margin: 0px;
+    // `
     
     return (
 

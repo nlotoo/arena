@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { ArenaPage } from '../../game-structure/ArenaPage';
 
 const Box = styled.div`
     width: 100px;
@@ -13,12 +12,12 @@ const Box = styled.div`
     transform: translate(${props => props.x}px, ${props => props.y}px);
 `;
 
-const data = [
-    { t: 1000 },
-    { t: 2000 },
-    { t: 3000 },
-    { t: 4000 },
-]
+// const data = [
+//     { t: 1000 },
+//     { t: 2000 },
+//     { t: 3000 },
+//     { t: 4000 },
+// ]
 export const DelayedComponent = ({ props }, { props1 }) => {
     console.log("asdfa" + props1.time);
     const [mounted, setMounted] = React.useState(false);
