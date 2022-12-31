@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import './BracketComponent3.css'
 
@@ -7,10 +8,10 @@ export const BracketComponent3 = () => {
 
     const [teams, setTeams] = useState();
     const [curentRound, setNextRound] = useState([]);
-    const [roundOne, setRounOne] = useState([])
-    const [roundTwo, setRoundTwo] = useState([])
-    const [roundThree, setRoundThree] = useState([])
-    const [final, setFinal]=useState([])
+    const [roundOne, setRounOne] = useState([]);
+    const [roundTwo, setRoundTwo] = useState([]);
+    const [roundThree, setRoundThree] = useState([]);
+    const [final, setFinal] = useState([]);
 
 
     let players = [
@@ -28,6 +29,12 @@ export const BracketComponent3 = () => {
 
     useEffect(() => {
         setNextRound(players);
+
+
+
+
+
+
     }, [])
 
     function Battles() {
@@ -35,6 +42,8 @@ export const BracketComponent3 = () => {
         let battle = [];
         let counter = 0;
         let result = [];
+
+
 
         // ДА Сложа ифове за всеки роунд
 
@@ -47,12 +56,12 @@ export const BracketComponent3 = () => {
 
                 if (curentRound[i].teams[0].score > curentRound[i].teams[1].score) {
                     // console.log(curentRound[i].teams[0])
-                    counter++
-                    battle.push(curentRound[i].teams[0])
+                    counter++;
+                    battle.push(curentRound[i].teams[0]);
                 } else if (curentRound[i].teams[0].score < curentRound[i].teams[1].score) {
                     // console.log(curentRound[i].teams[1])
-                    counter++
-                    battle.push(curentRound[i].teams[1])
+                    counter++;
+                    battle.push(curentRound[i].teams[1]);
                 }
 
                 // console.log(roundTwo)
@@ -66,7 +75,7 @@ export const BracketComponent3 = () => {
 
         }
 
-        setNextRound(result)
+        setNextRound(result);
 
 
     }
@@ -74,83 +83,103 @@ export const BracketComponent3 = () => {
 
     function A() {
 
-        Battles(teams)
-        console.log(curentRound)
+        Battles(teams);
 
-    }
+        if (curentRound.length == 1) {
+            setFinal(curentRound);
+            // console.log('final is load ', final);
 
-    function RoundOne() {
-        setRounOne(curentRound)
-    }
-    function RoundTwo() {
-        setRoundTwo(curentRound)
+        }
+        if (curentRound.length == 2) {
+            setRoundThree(curentRound);
+            // console.log('group3 is load ', roundThree);
+
+        }
+
+        if (curentRound.length == 4) {
+            setRoundTwo(curentRound);
+            // console.log('group2 is load ', roundTwo);
+
+        }
+
+        if (curentRound.length == 9) {
+            setRounOne(curentRound);
+            // console.log('group1 is load ', roundOne);
+        }
+
     }
 
     function reload() {
-        window.location.reload()
+        window.location.reload();
     }
-
-
 
 
     return (
 
         <div>
-            <button type='button' onClick={A}>Battle</button>
-            <button type='button' onClick={RoundOne}>Battle1</button>
-            <button type='button' onClick={RoundTwo}>Battle</button>
+            <Link to='/' className='button' ><i class="fa-solid fa-arrow-left"></i></Link>
+            <button type='button' className='button' onClick={A}>Go to next round</button>
+            <button type='button' className='button' onClick={reload}>Reload groups</button>
 
-            <button type='button' onClick={reload}>reload groups</button>
             <div className='tournamet'>
                 <div className='group-one'>
-                    {curentRound?.map((team) => {
+                    <div className="round-details">Round 1<br /><span className="date">March 16</span></div>
+                    {roundOne.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundOne?.map((team) => {
                         return (
                             <ul className='battle-container'>
-                                <li>{team.teams[0].name} - score: {team.teams[0].score}p. </li>
-                                <li>{team.teams[1].name} - score: {team.teams[1].score}p. </li>
+                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
                             </ul>
-                        )
+                        );
 
                     })}
 
                 </div>
-                {/* <div className='group-two'>
-                    <ul className='battle-container'>
-                        <li>Team A</li>
-                        <li>Team B</li>
-                    </ul>
-                    <ul className='battle-container'>
-                        <li>Team C</li>
-                        <li>Team D</li>
-                    </ul>
-                    <ul className='battle-container'>
-                        <li>Team E</li>
-                        <li>Team F</li>
-                    </ul>
-                    <ul className='battle-container'>
-                        <li>Team G</li>
-                        <li>Team H</li>
-                    </ul>
+                <div className='group-two'>
+                    <div className="round-details">Round 2<br /><span className="date">March 18</span></div>
+                    {roundTwo.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundTwo?.map((team) => {
+                        return (
+                            <ul className='battle-container'>
+                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                            </ul>
+                        );
+
+                    })}
                 </div>
+
                 <div className='group-three'>
-                    <ul className='battle-container'>
-                        <li>Team A</li>
-                        <li>Team B</li>
-                    </ul>
-                    <ul className='battle-container'>
-                        <li>Team C</li>
-                        <li>Team D</li>
-                    </ul>
+                    <div className="round-details">Round 3<br /><span className="date">March 22</span></div>
+                    {roundThree.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundThree?.map((team) => {
+                        return (
+                            <ul className='battle-container'>
+                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                            </ul>
+                        );
+
+                    })}
 
                 </div>
                 <div className='group-four'>
-                    <h3>FINAL</h3>
-                    <ul className='battle-container'>
-                        <li>Team A</li>
-                        <li>Team B</li>
-                    </ul>
-                </div> */}
+                    <div className='final-details'>
+                        <i className="fa fa-trophy"></i>
+                        <div className="round-details">championship <br /><span className="date">March 30 - Apr. 1</span></div>
+                    </div>
+                    {final.length == 0 ? <span className='span-group-msg'>final not ready yet</span> : final?.map((team) => {
+                        return (
+                            <div>
+
+                                <ul className='battle-container'>
+                                    <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                    <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                                </ul>
+                            </div>
+                        );
+
+                    })}
+                </div>
             </div>
         </div >
-    )
+    );
 }

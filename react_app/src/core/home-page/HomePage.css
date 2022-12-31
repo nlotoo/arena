@@ -1,0 +1,20 @@
+.menu {
+    display: flex;
+    justify-content: center;
+
+}
+
+.menu a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.menu a:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px #FA8072;
+    box-shadow: 5px 5px 15px 5px #FA8072;
+}
+.menu a:active {
+    -webkit-box-shadow: 5px 5px 15px 5px #FA8072;
+    box-shadow: 5px 5px 15px 5px ;
+}

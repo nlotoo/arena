@@ -1,0 +1,27 @@
+.login-container {
+    /* border: 1px solid #FA8072; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    padding: 40px;
+    background-color: #e4e4e46b;
+    border-radius: 10px;
+
+
+    /* predi footera */
+    margin-bottom: 150px; 
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+input {
+    margin: 7px;
+    border-radius: 5px;
+}

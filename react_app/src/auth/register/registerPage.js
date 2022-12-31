@@ -1,14 +1,13 @@
 
 import { useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { RegisterUser } from '../authServices';
-
+import './registerPage.css'
 
 export const RegisterPage = () => {
 
     useEffect(() => {
-        if (localStorage.getItem('token') !== null)
-        {
+        if (localStorage.getItem('token') !== null) {
             window.location.href = '/';
         }
 
@@ -24,28 +23,24 @@ export const RegisterPage = () => {
 
         console.log(username, password, repeatPassword);
 
-        if (password !== repeatPassword)
-        {
+        if (password !== repeatPassword) {
             console.log('passwords are not equal');
         }
-        else
-        {
+        else {
             console.log('passwords are equal');
             RegisterUser(username, password)
         }
     }
 
     return (
-        <div>
+        <div className='register-container'>
+            <Link to='/' className='button'><i class="fa-solid fa-arrow-left"></i></Link>
             <h1>Register Page</h1>
-            <form onSubmit={SubmitEvent}>
-                <label>username</label>
-                <input type="text" name='username'></input>
-                <label>password</label>
-                <input type="text" name='password'></input>
-                <label>repeat password</label>
-                <input type='text' name='repeatPassword'></input>
-                <button>Register</button>
+            <form className='register-form' onSubmit={SubmitEvent}>
+                <input type="text" name='username' placeholder='User name'></input>
+                <input type="text" name='password' placeholder='password'></input>
+                <input type='text' name='repeatPassword' placeholder='repeat password'></input>
+                <button type='button' className='button'>Register</button>
             </form>
         </div>
     );

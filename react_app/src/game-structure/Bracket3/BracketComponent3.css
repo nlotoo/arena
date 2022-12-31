@@ -1,17 +1,32 @@
 .tournamet {
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
     align-items: center;
+    background-color: #E4E4E4;
+    box-sizing: content-box;
 }
 
 .group-one {
     /* border: 2px solid green; */
+    margin-top: 30px;
     margin-right: 20px;
     margin-left: 50px;
 }
 
+
+.match-group {
+    text-align: center;
+    line-height: 0.6;
+    border-radius: 3px;
+    width: 200px;
+    height: 10px;
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+}
+
 .group-two {
     /* border: 2px solid red; */
+    margin-top: 30px;
     margin-right: 20px;
     margin-left: 50px;
 }
@@ -22,6 +37,7 @@
 
 .group-three {
     /* border: 2px solid purple; */
+    margin-top: 30px;
     margin-right: 20px;
     margin-left: 50px;
 }
@@ -32,10 +48,12 @@
 
 .group-four {
     /* border: 2px solid orangered; */
+    margin-top: 30px;
     margin-right: 20px;
     margin-left: 50px;
 }
-.group-four h3{
+
+.group-four h3 {
     margin-left: 50px;
 }
 
@@ -44,4 +62,40 @@
     padding: 10px;
     border: 1px solid black;
 
+}
+
+.space {
+    margin-left: 69px;
+}
+
+.final-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.final-details i {
+    font-size: 50px;
+    color: gray;
+}
+
+.button {
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: medium;
+    margin: 5px;
+    color: white;
+    background-color: salmon;
+    cursor: pointer;
+}
+
+.span-group-msg {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px;
+    color: gray;
+    text-transform: uppercase;
+    text-align: center;
+    height: 40px;
 }

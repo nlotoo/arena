@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
-
+import './HomePage.css'
 
 export const HomePage = () => {
     return (
-        <div>
-            <Link to="/login">go to login page</Link>
+        <div className="menu">
             <div>
-                <Link to="/register">go to register page</Link>
+                <Link className="button" to="/login">login page</Link>
             </div>
             <div>
-                <Link to="/arena">go to arena page</Link>
+                <Link className="button" to="/register">register page</Link>
+            </div>
+            <div>
+                <Link className="button" to="/bracket3">arena page</Link>
             </div>
         </div>
     );

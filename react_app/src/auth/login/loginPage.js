@@ -1,12 +1,13 @@
 
 import { useEffect } from 'react';
 import { loginUser } from '../authServices.js';
+import { Link } from 'react-router-dom';
+import './loginPage.css'
 
 export const LoginPage = () => {
 
     useEffect(() => {
-        if (localStorage.getItem('token') !== null)
-        {
+        if (localStorage.getItem('token') !== null) {
             window.location.href = '/';
         }
     }, []);
@@ -25,13 +26,15 @@ export const LoginPage = () => {
         console.log(data);
     }
     return (
-        <div>
-            <h1>Login Page</h1>
-            <form onSubmit={SubmitHandler}>
+        <div className='login-container'>
+            <Link to='/' className='button'><i class="fa-solid fa-arrow-left"></i></Link>
 
-                unsername: <input type="text" name="login" />
-                password: <input type="password" name="password" />
-                <button>login</button>
+            <h1>Login Page</h1>
+            <form className='form-container' onSubmit={SubmitHandler}>
+
+                <input type="text" name="login" placeholder='User name' />
+                <input type="password" name="password" placeholder='Password' />
+                <button type='button' className='button'>login</button>
             </form>
         </div>
     );
