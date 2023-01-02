@@ -1,5 +1,6 @@
 const Pet = require('../schemes/PET.js')
 const User = require('../schemes/USER.js')
+const Team = require('../schemes/TEAM.js')
 
 
 async function createPet(data) {
@@ -237,6 +238,28 @@ async function getCustomPet(petQuery) {
 };
 
 
+async function RegisteTeam(data) {
+
+    let saved = new Team(data.obj)
+    return saved.save()
+
+
+
+}
+
+
+async function getListOfTeam() {
+
+
+    let listTeam = await Team.find({});
+    // console.log(listTeam);
+
+
+    return listTeam
+
+}
+
+
 
 
 
@@ -245,6 +268,10 @@ async function getCustomPet(petQuery) {
 
 
 module.exports = {
+    RegisteTeam,
+    getListOfTeam,
+
+
     disLikeThePet,
     createPet,
     getUserPets,

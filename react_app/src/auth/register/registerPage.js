@@ -19,6 +19,7 @@ export const RegisterPage = () => {
         let username = event.target.username.value;
         let password = event.target.password.value;
         let repeatPassword = event.target.repeatPassword.value;
+        console.log(username)
 
 
         console.log(username, password, repeatPassword);
@@ -36,7 +37,7 @@ export const RegisterPage = () => {
         <div className='register-container'>
             <Link to='/' className='button'><i class="fa-solid fa-arrow-left"></i></Link>
             <h1>Register Page</h1>
-            <form className='register-form' onSubmit={SubmitEvent}>
+            <form className='register-form' onClick={SubmitEvent}>
                 <input type="text" name='username' placeholder='User name'></input>
                 <input type="text" name='password' placeholder='password'></input>
                 <input type='text' name='repeatPassword' placeholder='repeat password'></input>

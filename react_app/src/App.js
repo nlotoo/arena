@@ -6,14 +6,14 @@ import { LoginPage } from './auth/login/loginPage.js';
 import { RegisterPage } from './auth/register/registerPage';
 
 import { BracketComponent3 } from './game-structure/Bracket3/BracketComponent3.js'
-
-
+import RegisterTeamElement from './core/RegisterTeamElement.js/RegisterTeamElement';
+import TournamentLoby from './core/tournament-loby/TournamentLoby';
 
 function App() {
   return (
     <div>
       {/* трябва да се импортнат предз css-a */}
-    
+
       <header className="hero">
         <div className="hero-wrap">
           <p className="intro" id="intro">BATE</p>
@@ -26,6 +26,9 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/bracket3" element={<BracketComponent3 />} />
+        <Route path="/register-team" element={<RegisterTeamElement />} />
+        <Route path="/register-team" element={<RegisterTeamElement />} />
+        <Route path="/tournamet-loby" element={<TournamentLoby />} />
         <Route path="*" element={<NotFoundPage />} />
 
       </Routes>

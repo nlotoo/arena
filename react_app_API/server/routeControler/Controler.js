@@ -8,14 +8,12 @@ const profileService = require('../services/profileService.js')
 
 // function random() {  console.log('Registered'); }
 router.post('/sign-up', async (request, response) => {
-    try
-    {
+    try {
         console.log(request.body);
         let data = await authService.CreateUser(request.body)
         response.status(200).json(data);
     }
-    catch (err)
-    {
+    catch (err) {
         response.status(401).json({ message: err });
     }
 })
@@ -24,31 +22,38 @@ router.post('/sing-in', async (req, res) => {
 
     console.log(req.body);
 
-    try
-    {
+    try {
         let data = await authService.loginUser(req.body)
         res.status(200).json(data);
-    } catch (err)
-    {
+    } catch (err) {
         console.log(err)
         res.status(401).json({ message: err });
     }
 
 })
 
-router.get('/sse', (req, res) => {
-    res.writeHead(200, {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
-    })
-    setInterval(function () {
-        // if (localVersion < globalVersion)
-        //    {
-        res.status(200).write(`data: TEST\n\n `)
-        //globalVersion = localVersion;
-        //  }
-    }, 10)
+
+
+router.post('/register-team', async (request, response) => {
+    try {
+
+        let data = await profileService.RegisteTeam(request.body)
+        response.status(200).json(data);
+    }
+    catch (err) {
+        response.status(401).json({ message: err });
+    }
+})
+
+router.get('/team-list', async (request, response) => {
+    try {
+
+        let data = await profileService.getListOfTeam();
+        response.status(200).json(data);
+    }
+    catch (err) {
+        response.status(401).json({ message: err });
+    }
 })
 
 

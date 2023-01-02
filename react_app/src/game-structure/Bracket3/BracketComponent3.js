@@ -1,17 +1,62 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../../context/stateContext';
 
 import './BracketComponent3.css'
 
 
 export const BracketComponent3 = () => {
 
-    const [teams, setTeams] = useState();
+    const [teams, setTeams] = useState([]);
     const [curentRound, setNextRound] = useState([]);
     const [roundOne, setRounOne] = useState([]);
     const [roundTwo, setRoundTwo] = useState([]);
     const [roundThree, setRoundThree] = useState([]);
     const [final, setFinal] = useState([]);
+
+    const [games, setGamers] = useState([]);
+
+    const { contextData } = useStateContext();
+
+    console.log(contextData);
+
+
+    let arr = [];
+
+    function sortingPlayer() {
+
+        let obj;
+        // console.log(contextData.teams)
+
+        let counter = 0;
+        let arrIndex = 0;
+        let teamA = {};
+        let teamB = {};
+
+        for (let i = 0; i < contextData.teams.length; i++) {
+
+
+            if (counter < 1) {
+                teamA = contextData.teams[i]
+                counter++
+            } else if (counter == 1) {
+                teamB = contextData.teams[i]
+                counter++
+            }
+
+            if (counter === 2) {
+                arr.push({ id: arrIndex, teams: [teamA, teamB] })
+                arrIndex++;
+                counter = 0
+            }
+        }
+
+
+
+        setGamers(arr)
+        // console.log(arr)
+    }
+    console.log(games)
 
 
     let players = [
@@ -28,14 +73,9 @@ export const BracketComponent3 = () => {
     ];
 
     useEffect(() => {
-        setNextRound(players);
+        setNextRound(games);
 
-
-
-
-
-
-    }, [])
+    }, [games])
 
     function Battles() {
 
@@ -44,8 +84,6 @@ export const BracketComponent3 = () => {
         let result = [];
 
 
-
-        // ДА Сложа ифове за всеки роунд
 
 
         for (let i = 0; i < curentRound.length; i++) {
@@ -117,18 +155,24 @@ export const BracketComponent3 = () => {
     return (
 
         <div>
-            <Link to='/' className='button' ><i class="fa-solid fa-arrow-left"></i></Link>
+            <div className='team-name'><span>team name: </span>{contextData?.MyTeam}</div>
+
+            <Link to='/' className='button' ><i className="fa-solid fa-arrow-left"></i></Link>
             <button type='button' className='button' onClick={A}>Go to next round</button>
             <button type='button' className='button' onClick={reload}>Reload groups</button>
-
+            <button type='button' className='button' onClick={sortingPlayer}> sort</button>
+            {/* <Link to="/register-team" className="button" >Join in Tournament</Link> */}
+            {contextData?.teams == undefined ? <div><Link to='/register-team'>You need to add teams. Go and add more teams</Link></div> : ''}
             <div className='tournamet'>
                 <div className='group-one'>
                     <div className="round-details">Round 1<br /><span className="date">March 16</span></div>
                     {roundOne.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundOne?.map((team) => {
+                        console.log(team)
+
                         return (
                             <ul className='battle-container'>
-                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
-                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                                <li className='match-group'>{team.teams[0].teamName} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].teamName} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
                             </ul>
                         );
 
@@ -140,8 +184,8 @@ export const BracketComponent3 = () => {
                     {roundTwo.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundTwo?.map((team) => {
                         return (
                             <ul className='battle-container'>
-                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
-                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                                <li className='match-group'>{team.teams[0].teamName} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].teamName} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
                             </ul>
                         );
 
@@ -153,8 +197,8 @@ export const BracketComponent3 = () => {
                     {roundThree.length == 0 ? <span className='span-group-msg'>Group not ready yet</span> : roundThree?.map((team) => {
                         return (
                             <ul className='battle-container'>
-                                <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
-                                <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                                <li className='match-group'>{team.teams[0].teamName} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                <li className='match-group'>{team.teams[1].teamName} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
                             </ul>
                         );
 
@@ -171,8 +215,8 @@ export const BracketComponent3 = () => {
                             <div>
 
                                 <ul className='battle-container'>
-                                    <li className='match-group'>{team.teams[0].name} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
-                                    <li className='match-group'>{team.teams[1].name} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
+                                    <li className='match-group'>{team.teams[0].teamName} <span className='space'>Score:</span> {team.teams[0].score}p. </li>
+                                    <li className='match-group'>{team.teams[1].teamName} <span className='space'>Score:</span> {team.teams[1].score}p. </li>
                                 </ul>
                             </div>
                         );

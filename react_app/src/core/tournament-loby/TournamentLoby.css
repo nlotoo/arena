@@ -1,0 +1,20 @@
+.loby-container {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    padding: 40px;
+    background-color: #e4e4e46b;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.form-container-loby label{
+
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px;
+    color: gray;
+    text-transform: uppercase;
+    text-align: center;
+    height: 40px;
+}

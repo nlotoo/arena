@@ -25,6 +25,7 @@ export const LoginPage = () => {
         let data = loginUser(obj);
         console.log(data);
     }
+    
     return (
         <div className='login-container'>
             <Link to='/' className='button'><i class="fa-solid fa-arrow-left"></i></Link>
