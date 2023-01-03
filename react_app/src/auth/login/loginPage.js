@@ -23,7 +23,8 @@ export const LoginPage = () => {
         let obj = { username, password };
 
         let data = loginUser(obj);
-        console.log(data);
+
+        window.location.href = '/';
     }
     
     return (
@@ -35,7 +36,7 @@ export const LoginPage = () => {
 
                 <input type="text" name="login" placeholder='User name' />
                 <input type="password" name="password" placeholder='Password' />
-                <button type='button' className='button'>login</button>
+                <button type='submit' className='button'>login</button>
             </form>
         </div>
     );

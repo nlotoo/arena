@@ -37,11 +37,11 @@ export const RegisterPage = () => {
         <div className='register-container'>
             <Link to='/' className='button'><i class="fa-solid fa-arrow-left"></i></Link>
             <h1>Register Page</h1>
-            <form className='register-form' onClick={SubmitEvent}>
+            <form className='register-form' onSubmit={SubmitEvent}>
                 <input type="text" name='username' placeholder='User name'></input>
                 <input type="text" name='password' placeholder='password'></input>
                 <input type='text' name='repeatPassword' placeholder='repeat password'></input>
-                <button type='button' className='button'>Register</button>
+                <button type='submit' className='button'>Register</button>
             </form>
         </div>
     );

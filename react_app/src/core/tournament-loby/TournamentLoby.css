@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-.form-container-loby label{
+.form-container-loby label {
 
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 13px;
@@ -17,4 +17,28 @@
     text-transform: uppercase;
     text-align: center;
     height: 40px;
+}
+
+.add-my-team {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* .green-text {
+    color: greenyellow;
+}
+
+.yellow-text {
+    color: black;
+} */
+
+.add-my-team-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.join-tournament{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

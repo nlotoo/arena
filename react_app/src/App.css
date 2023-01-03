@@ -61,6 +61,49 @@ a {
     text-decoration: none;
 }
 
+
+.error-msg {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 7px;
+    margin: 20px;
+}
+
+.button {
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: medium;
+    margin: 5px;
+    color: white;
+    background-color: salmon;
+    cursor: pointer;
+}
+
+.logout-buton {
+    margin-top: -30px;
+    margin-left: 20px;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: medium;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    background-color: salmon;
+    cursor: pointer;
+}
+
+.logout-buton:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px #FA8072;
+    box-shadow: 5px 5px 15px 5px #FA8072;
+}
+
+.logout-buton:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px #FA8072;
+    box-shadow: 5px 5px 15px 5px ;
+}
+
 /* 
 #bracket {
     overflow: hidden;

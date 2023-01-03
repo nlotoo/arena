@@ -29,7 +29,7 @@ const RegisterTeamElement = () => {
         let res = await loadPlayers();
         registerTeams(res)
 
-        if (res.length > 17) {
+        if (res.length > 15) {
             return;
         }
 
@@ -61,20 +61,20 @@ const RegisterTeamElement = () => {
                 <h1>Register yours Team</h1>
                 <form className='register-form' onSubmit={registerTeam}>
                     <input type="text" name='team' placeholder='Team name'></input>
-                    {teams.length == 17 ? <button type='submit' className='' disabled={teams.length == 17} >Register</button> : <button type='submit' className='button' disabled={teams.length == 17} >Register</button>}
-                    {teams.length == 17 ? 'you have enough players' : ''}
+                    {teams.length == 15 ? <button type='submit' className='' disabled={teams.length == 15} >Register</button> : <button type='submit' className='button' disabled={teams.length == 17} >Register</button>}
+                    {teams.length == 15 ? 'you have enough players' : ''}
                 </form>
 
             </div>
             <div className='players-list'>
-                {teams.length < 17 ? `you don't have enough players(need more ${18 - teams.length})` : <ol>
+                {teams.length < 15 ? `you don't have enough players(need more ${16 - teams.length})` : <ol>
                     {teams?.map((listedTeam) => {
                         return <li key={listedTeam._id}><p>{listedTeam.teamName}</p></li>
                     })}
                 </ol>
 
                 }
-                {teams.length > 15 && <Link to='/tournamet-loby' className='button'>Go to Tournnament Loby</Link>}
+                {teams.length > 14 && <Link to='/tournamet-loby' className='button'>Go to Tournnament Loby</Link>}
 
             </div>
         </div>
